@@ -14,6 +14,20 @@ public class KATA4 {
             System.out.println(dire1);
         }
         
+        print(file.listFiles(),"");
+    }
+
+    private static void print(File[] listFiles, String string) {
+        if (listFiles == null) {
+            return;
+        }
+        
+        for (File listFile : listFiles) {
+            System.out.println(string+(listFile.isDirectory()?"+":"->")+listFile.getName());
+            if (listFile.isFile() || listFile.isHidden()) continue;
+            print(listFile.listFiles(), string + " ");
+            
+        }
     }
     
 }
